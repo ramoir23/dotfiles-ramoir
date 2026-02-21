@@ -1,0 +1,91 @@
+/* wal.rasi - gerado pelo pywal - nao edite */
+
+* {
+    background-col:  rgba(3, 5, 8, 0.93);
+    foreground-col:  #b0babf;
+    accent-col:      #CF3F47;
+    urgent-col:      #25515C;
+    selected-bg:     #CF3F47;
+    selected-fg:     #030508;
+    hover-col:       rgba(37, 81, 92, 0.35);
+    input-bg:        rgba(3, 5, 8, 0.80);
+    placeholder-col: #7b8285;
+}
+
+window {
+    background-color: @background-col;
+    border:           2px;
+    border-color:     @accent-col;
+    border-radius:    10px;
+    padding:          12px;
+    width:            480px;
+}
+
+mainbox {
+    background-color: transparent;
+    spacing:          8px;
+}
+
+inputbar {
+    background-color: @input-bg;
+    border-radius:    8px;
+    padding:          8px 12px;
+    spacing:          8px;
+    children:         [ prompt, entry ];
+}
+
+prompt {
+    background-color: transparent;
+    text-color:       @accent-col;
+    font:             "JetBrainsMono Nerd Font 13";
+}
+
+entry {
+    background-color:  transparent;
+    text-color:        @foreground-col;
+    font:              "JetBrainsMono Nerd Font 13";
+    placeholder:       "Buscar...";
+    placeholder-color: @placeholder-col;
+}
+
+listview {
+    background-color: transparent;
+    lines:            8;
+    columns:          1;
+    spacing:          4px;
+}
+
+element {
+    background-color: transparent;
+    border-radius:    6px;
+    padding:          8px 12px;
+    spacing:          10px;
+    children:         [ element-icon, element-text ];
+}
+
+element-icon {
+    background-color: transparent;
+    size:             24px;
+}
+
+element-text {
+    background-color: transparent;
+    text-color:       @foreground-col;
+    font:             "JetBrainsMono Nerd Font 13";
+}
+
+element.selected.normal {
+    background-color: @selected-bg;
+}
+
+element.selected.normal element-text {
+    text-color: @selected-fg;
+}
+
+element.urgent {
+    background-color: @urgent-col;
+}
+
+element normal hover {
+    background-color: @hover-col;
+}

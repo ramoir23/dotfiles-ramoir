@@ -1,0 +1,198 @@
+/* Waybar Style - Integração com Pywal
+ * CachyOS + Hyprland
+ */
+
+/* Importar cores do Pywal */
+@import "colors-pywal.css";
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Fira Code", "Roboto", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: alpha(@background, 0.65);
+    color: @foreground;
+    transition-property: background-color;
+    transition-duration: 0.3s;
+    
+    /* Waybar compacta e flutuante */
+    
+    
+    /* Compactar e arredondar barra */
+    padding: 0px;
+    border-radius: 20px;
+    
+    /* Compactar e arredondar barra */
+    border-radius: 20px;
+
+}
+
+/* Estilo geral dos módulos */
+#workspaces,
+#window,
+#clock,
+#custom-notification,
+#network,
+#bluetooth,
+#pulseaudio,
+#backlight,
+#battery,
+#tray {
+    padding: 0 12px;
+    margin: 4px 2px;
+    background: alpha(@color0, 0.5);
+    border-radius: 8px;
+}
+
+/* Workspaces do Hyprland */
+#workspaces {
+    padding: 0 4px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    color: @color8;
+    background: transparent;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+#workspaces button:hover {
+    background: alpha(@color8, 0.3);
+    color: @foreground;
+}
+
+#workspaces button.active {
+    color: @color4;
+    background: alpha(@color4, 0.2);
+}
+
+#workspaces button.nonempty {
+    color: @foreground;
+    background: alpha(@color6, 0.2);
+}
+
+#workspaces button.urgent {
+    color: @color1;
+    background: alpha(@color1, 0.2);
+}
+
+/* Título da janela */
+#window {
+    color: @color7;
+    font-weight: 500;
+}
+
+/* Relógio */
+#clock {
+    color: @foreground;
+    font-weight: 600;
+    background: alpha(@color4, 0.2);
+}
+
+/* Notificações */
+#custom-notification {
+    color: @color3;
+}
+
+/* Rede */
+#network {
+    color: @color6;
+}
+
+#network.disconnected {
+    color: @color1;
+    background: alpha(@color1, 0.15);
+}
+
+/* Bluetooth */
+#bluetooth {
+    color: @color4;
+}
+
+#bluetooth.disabled {
+    color: @color8;
+}
+
+#bluetooth.connected {
+    color: @color4;
+    background: alpha(@color4, 0.15);
+}
+
+/* Áudio */
+#pulseaudio {
+    color: @color5;
+}
+
+#pulseaudio.muted {
+    color: @color8;
+    background: alpha(@color8, 0.15);
+}
+
+/* Brilho */
+#backlight {
+    color: @color3;
+}
+
+/* Bateria */
+#battery {
+    color: @color2;
+}
+
+#battery.charging {
+    color: @color2;
+    background: alpha(@color2, 0.15);
+}
+
+#battery.warning:not(.charging) {
+    color: @color3;
+    background: alpha(@color3, 0.15);
+}
+
+#battery.critical:not(.charging) {
+    color: @color1;
+    background: alpha(@color1, 0.15);
+    animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* System Tray */
+#tray {
+    padding: 0 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: alpha(@color1, 0.2);
+}
+
+/* Tooltips */
+tooltip {
+    background: alpha(@background, 0.95);
+    border: 1px solid alpha(@color4, 0.3);
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+tooltip label {
+    color: @foreground;
+}
