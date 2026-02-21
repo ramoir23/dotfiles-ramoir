@@ -1,15 +1,15 @@
 /* wal.rasi - gerado pelo pywal - nao edite */
 
 * {
-    background-col:  rgba(3, 5, 8, 0.93);
-    foreground-col:  #b0babf;
-    accent-col:      #CF3F47;
-    urgent-col:      #25515C;
-    selected-bg:     #CF3F47;
-    selected-fg:     #030508;
-    hover-col:       rgba(37, 81, 92, 0.35);
-    input-bg:        rgba(3, 5, 8, 0.80);
-    placeholder-col: #7b8285;
+    background-col:  rgba(17, 19, 19, 0.93);
+    foreground-col:  #e6decb;
+    accent-col:      #A9822C;
+    urgent-col:      #95662D;
+    selected-bg:     #A9822C;
+    selected-fg:     #111313;
+    hover-col:       rgba(149, 102, 45, 0.35);
+    input-bg:        rgba(17, 19, 19, 0.80);
+    placeholder-col: #a19b8e;
 }
 
 window {

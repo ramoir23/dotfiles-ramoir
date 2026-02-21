@@ -9,20 +9,21 @@
     "height": 34,
     "spacing": 8,
     
-    "modules-left": ["hyprland/workspaces", ],
-    "modules-center": ["tray", "clock", "custom/notification"],
-    "modules-right": ["network", "pulseaudio", "backlight", "battery"],
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["custom/notification", "network", "bluetooth", "pulseaudio", "backlight", "battery", "tray"],
 
     "hyprland/workspaces": {
-    "format": "{id}{windows}",
-    "format-window-separator": "",
-    "window-rewrite-default": "·",
-    "window-rewrite": {},
-    "persistent-workspaces": {
-        "*": [1, 2, 3, 4, 5]
+        "format": "{icon}{windows}",
+        "format-window-separator": "",
+        "window-rewrite-default": "·",
+        "window-rewrite": {},
+        "format-icons": {
+            "1": "1", "2": "2", "3": "3", "4": "4", "5": "5",
+            "active": "•", "default": "·"
+        },
+        "on-click": "activate"
     },
-    "on-click": "activate"
-},
 
     "hyprland/window": {
         "format": "{}",
@@ -64,6 +65,13 @@
     "on-click": "$HOME/.local/bin/rofi-wifi",
     "interval": 5
 },
+
+    "bluetooth": {
+        "format": "  {status}",
+        "format-disabled": "󰂲  Off",
+        "format-connected": "  {num_connections}",
+        "on-click": "blueman-manager"
+    },
 
     "pulseaudio": {
         "format": "{icon}  {volume}%",

@@ -14,7 +14,7 @@
 }
 
 window#waybar {
-    background: alpha(@background, 0.65);
+    background: alpha(@background, 0.90);
     color: @foreground;
     transition-property: background-color;
     transition-duration: 0.3s;
