@@ -1,0 +1,98 @@
+{
+    "width": 1700,
+    "margin-top": 10,
+
+    "layer": "top",
+    "position": "top",
+    "height": 35,
+    "spacing": 8,
+
+    "modules-left": ["clock", "custom/idle-inhibit", "custom/notification", "tray"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["network", "custom/volume-bar", "custom/backlight-bar", "custom/battery-bar"],
+
+    "hyprland/workspaces": {
+        "format": "{id}{windows}",
+        "format-window-separator": "",
+        "window-rewrite-default": "·",
+        "window-rewrite": {},
+        "persistent-workspaces": {
+            "*": [1, 2, 3, 4, 5]
+        },
+        "on-click": "activate"
+    },
+
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 50
+    },
+
+    "clock": {
+        "format": " {:%H:%M • %d/%m/%y} ",
+        "format-alt": "  {:%A, %d de %B}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
+
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "󰂚<span foreground='red'><sup></sup></span>",
+            "none": "󰂚",
+            "dnd-notification": "󰂛<span foreground='red'><sup></sup></span>",
+            "dnd-none": "󰂛",
+            "inhibited-notification": "󰂚<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "󰂚",
+            "dnd-inhibited-notification": "󰂛<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": "󰂛"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+
+    "network": {
+        "format-wifi": "󰤨",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰤭  Off",
+        "tooltip-format-wifi": "{essid} — {signalStrength}%",
+        "on-click": "$HOME/.local/bin/rofi-wifi",
+        "interval": 5
+    },
+
+    "custom/volume-bar": {
+        "exec": "~/.local/bin/waybar-volume-bar",
+        "return-type": "json",
+        "interval": 2,
+        "on-click": "pavucontrol",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+    },
+
+    "custom/backlight-bar": {
+        "exec": "~/.local/bin/waybar-backlight-bar",
+        "return-type": "json",
+        "interval": 2,
+        "on-scroll-up": "brightnessctl set +5%",
+        "on-scroll-down": "brightnessctl set 5%-"
+    },
+
+    "custom/battery-bar": {
+        "exec": "~/.local/bin/waybar-battery-bar",
+        "return-type": "json",
+        "interval": 30
+    },
+
+    "tray": {"spacing": 10},
+
+    "custom/idle-inhibit": {
+        "exec": "~/.local/bin/idle-inhibit-status",
+        "return-type": "json",
+        "on-click": "~/.local/bin/idle-inhibit-toggle",
+        "interval": "once",
+        "signal": 8
+    }
+}

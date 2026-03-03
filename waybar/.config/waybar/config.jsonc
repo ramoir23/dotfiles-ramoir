@@ -1,40 +1,50 @@
 {
-    "width": 1200,
+    "width": 1700,
     "margin-top": 10,
-    
-    // Configuração de largura e posição
-    
     "layer": "top",
     "position": "top",
-    "height": 34,
+    "height": 35,
     "spacing": 8,
-    
-    "modules-left": ["hyprland/workspaces", ],
-    "modules-center": ["tray", "clock", "custom/notification"],
-    "modules-right": ["network", "pulseaudio", "backlight", "battery"],
-
+    "modules-left": [
+        "clock",
+        "custom/idle-inhibit",
+        "custom/notification",
+        "tray"
+    ],
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+    "modules-right": [
+        "network",
+        "pulseaudio",
+        "backlight",
+        "battery"
+    ],
     "hyprland/workspaces": {
-    "format": "{id}{windows}",
-    "format-window-separator": "",
-    "window-rewrite-default": "·",
-    "window-rewrite": {},
-    "persistent-workspaces": {
-        "*": [1, 2, 3, 4, 5]
+        "format": "{id}{windows}",
+        "format-window-separator": "",
+        "window-rewrite-default": "·",
+        "window-rewrite": {},
+        "persistent-workspaces": {
+            "*": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        "on-click": "activate"
     },
-    "on-click": "activate"
-},
-
     "hyprland/window": {
         "format": "{}",
         "max-length": 50
     },
-
     "clock": {
-        "format": "  {:%H:%M  •  %d/%m}",
+        "format": " {:%H:%M • %d/%m/%y} ",
         "format-alt": "  {:%A, %d de %B}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>"
     },
-
     "custom/notification": {
         "tooltip": false,
         "format": "{icon}",
@@ -55,40 +65,112 @@
         "on-click-right": "swaync-client -d -sw",
         "escape": true
     },
-
-  "network": {
-    "format-wifi": "󰤨",
-    "format-ethernet": "󰈀",
-    "format-disconnected": "󰤭  Off",
-    "tooltip-format-wifi": "{essid} — {signalStrength}%",
-    "on-click": "$HOME/.local/bin/rofi-wifi",
-    "interval": 5
-},
-
+    "network": {
+        "format-wifi": "󰤨",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰤭  Off",
+        "tooltip-format-wifi": "{essid} — {signalStrength}%",
+        "on-click": "$HOME/.local/bin/rofi-wifi",
+        "interval": 5
+    },
     "pulseaudio": {
-        "format": "{icon}  {volume}%",
-        "format-muted": "󰝟  Mudo",
+        "format": "󰕾 {icon} {volume:3}%",
+        "format-muted": "󰝟 ░░░░░░░░░░   0%",
         "format-icons": {
-            "default": ["󰕿", "󰖀", "󰕾"]
+            "default": [
+                "░░░░░░░░░░",
+                "█░░░░░░░░░",
+                "█░░░░░░░░░",
+                "██░░░░░░░░",
+                "██░░░░░░░░",
+                "███░░░░░░░",
+                "███░░░░░░░",
+                "████░░░░░░",
+                "████░░░░░░",
+                "█████░░░░░",
+                "█████░░░░░",
+                "██████░░░░",
+                "██████░░░░",
+                "███████░░░",
+                "███████░░░",
+                "████████░░",
+                "████████░░",
+                "█████████░",
+                "█████████░",
+                "██████████"
+            ]
         },
         "on-click": "pavucontrol",
-        "scroll-step": 5
+        "scroll-step": 5,
+        "tooltip-format": "Volume: {volume}%"
     },
-
     "backlight": {
-        "format": "{icon}  {percent}%",
-        "format-icons": ["󰋙", "󰫃", "󰫄", "󰫅", "󰫆", "󰫇", "󰫈", "󰃠"],
+        "format": "󰃠 {icon} {percent:3}%",
+        "format-icons": [
+            "░░░░░░░░░░",
+            "█░░░░░░░░░",
+            "█░░░░░░░░░",
+            "██░░░░░░░░",
+            "██░░░░░░░░",
+            "███░░░░░░░",
+            "███░░░░░░░",
+            "████░░░░░░",
+            "████░░░░░░",
+            "█████░░░░░",
+            "█████░░░░░",
+            "██████░░░░",
+            "██████░░░░",
+            "███████░░░",
+            "███████░░░",
+            "████████░░",
+            "████████░░",
+            "█████████░",
+            "█████████░",
+            "██████████"
+        ],
         "on-scroll-up": "brightnessctl set +5%",
-        "on-scroll-down": "brightnessctl set 5%-"
+        "on-scroll-down": "brightnessctl set 5%-",
+        "tooltip-format": "Brilho: {percent}%"
     },
-
     "battery": {
-        "format": "{icon}  {capacity}%",
-        "format-charging": "󰂄  {capacity}%",
-        "format-full": "󰁹  Full",
-        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-        "states": {"warning": 30, "critical": 15}
+        "format": "󰁹 {icon} {capacity:3}%",
+        "format-charging": "󰂄 {icon} {capacity:3}%",
+        "format-icons": [
+            "░░░░░░░░░░",
+            "█░░░░░░░░░",
+            "█░░░░░░░░░",
+            "██░░░░░░░░",
+            "██░░░░░░░░",
+            "███░░░░░░░",
+            "███░░░░░░░",
+            "████░░░░░░",
+            "████░░░░░░",
+            "█████░░░░░",
+            "█████░░░░░",
+            "██████░░░░",
+            "██████░░░░",
+            "███████░░░",
+            "███████░░░",
+            "████████░░",
+            "████████░░",
+            "█████████░",
+            "█████████░",
+            "██████████"
+        ],
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "tooltip-format": "Bateria: {capacity}%"
     },
-
-    "tray": {"spacing": 10}
+    "tray": {
+        "spacing": 10
+    },
+    "custom/idle-inhibit": {
+        "exec": "~/.local/bin/idle-inhibit-status",
+        "return-type": "json",
+        "on-click": "~/.local/bin/idle-inhibit-toggle",
+        "interval": "once",
+        "signal": 8
+    }
 }

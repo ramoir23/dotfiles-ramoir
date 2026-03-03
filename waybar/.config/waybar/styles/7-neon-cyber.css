@@ -1,0 +1,115 @@
+/* Neon Cyber - brilho neon nas bordas, estilo cyberpunk */
+@import "colors-pywal.css";
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Fira Code", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: alpha(@background, 0.88);
+    color: @foreground;
+    border-top: 1px solid alpha(@color4, 0.6);
+    border-bottom: 1px solid alpha(@color6, 0.4);
+}
+
+#workspaces,
+#window,
+#clock,
+#custom-notification,
+#network,
+#bluetooth,
+#pulseaudio,
+#backlight,
+#battery,
+#tray,
+#custom-idle-inhibit {
+    padding: 0 12px;
+    margin: 4px 3px;
+    background: alpha(@background, 0.7);
+    border-radius: 4px;
+    border: 1px solid alpha(@color8, 0.15);
+}
+
+#workspaces { padding: 0 4px; }
+
+#workspaces button {
+    padding: 0 9px;
+    color: alpha(@foreground, 0.4);
+    background: transparent;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+#workspaces button:hover {
+    color: @color6;
+    background: alpha(@color6, 0.1);
+    border: 1px solid alpha(@color6, 0.3);
+}
+
+#workspaces button.active {
+    color: @color6;
+    background: alpha(@color6, 0.15);
+    border: 1px solid alpha(@color6, 0.5);
+}
+
+#workspaces button.nonempty {
+    color: alpha(@foreground, 0.65);
+}
+
+#workspaces button.urgent {
+    color: @color1;
+    border: 1px solid alpha(@color1, 0.5);
+}
+
+#clock {
+    color: @color6;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-color: alpha(@color6, 0.4);
+    text-shadow: 0 0 8px alpha(@color6, 0.8);
+}
+
+#network    { color: @color4; border-color: alpha(@color4, 0.35); }
+#pulseaudio { color: @color5; border-color: alpha(@color5, 0.35); }
+#backlight  { color: @color3; border-color: alpha(@color3, 0.35); }
+#battery    { color: @color2; border-color: alpha(@color2, 0.35); }
+#bluetooth  { color: @color4; border-color: alpha(@color4, 0.35); }
+#custom-notification { color: @color3; }
+
+#network.disconnected { color: @color1; border-color: alpha(@color1, 0.5); }
+#pulseaudio.muted     { color: @color8; border-color: transparent; }
+#bluetooth.disabled   { color: @color8; border-color: transparent; }
+#bluetooth.connected  { color: @color4; background: alpha(@color4, 0.15); }
+#battery.charging     { color: @color2; background: alpha(@color2, 0.12); }
+
+#battery.warning:not(.charging) {
+    color: @color3;
+    border-color: alpha(@color3, 0.5);
+}
+
+#battery.critical:not(.charging) {
+    color: @color1;
+    border-color: @color1;
+    animation: blink 0.7s linear infinite;
+}
+
+@keyframes blink {
+    0%   { opacity: 1; }
+    50%  { opacity: 0.2; }
+    100% { opacity: 1; }
+}
+
+tooltip {
+    background: alpha(@background, 0.96);
+    border: 1px solid alpha(@color6, 0.4);
+    border-radius: 4px;
+    padding: 8px 12px;
+}
+
+tooltip label { color: @foreground; }

@@ -1,0 +1,98 @@
+/* Borderline - linha colorida embaixo de cada módulo */
+@import "colors-pywal.css";
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Fira Code", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: alpha(@background, 0.92);
+    color: @foreground;
+    border-bottom: 1px solid alpha(@color4, 0.25);
+}
+
+#workspaces,
+#window,
+#clock,
+#custom-notification,
+#network,
+#bluetooth,
+#pulseaudio,
+#backlight,
+#battery,
+#tray,
+#custom-idle-inhibit {
+    padding: 0 12px;
+    margin: 0;
+    background: transparent;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+#clock   { border-bottom-color: alpha(@color4, 0.7); color: @foreground; font-weight: 600; }
+#network { border-bottom-color: alpha(@color6, 0.7); color: @color6; }
+#pulseaudio { border-bottom-color: alpha(@color5, 0.7); color: @color5; }
+#backlight  { border-bottom-color: alpha(@color3, 0.7); color: @color3; }
+#battery    { border-bottom-color: alpha(@color2, 0.7); color: @color2; }
+#bluetooth  { border-bottom-color: alpha(@color4, 0.7); color: @color4; }
+#custom-notification { color: @color3; }
+
+#workspaces button {
+    padding: 0 9px;
+    color: @color8;
+    background: transparent;
+    border-radius: 0;
+    border-bottom: 2px solid transparent;
+    transition: all 0.25s ease;
+}
+
+#workspaces button:hover {
+    color: @foreground;
+    border-bottom-color: alpha(@color8, 0.5);
+}
+
+#workspaces button.active {
+    color: @color4;
+    border-bottom-color: @color4;
+}
+
+#workspaces button.nonempty { color: @foreground; }
+
+#workspaces button.urgent {
+    color: @color1;
+    border-bottom-color: @color1;
+}
+
+#network.disconnected { color: @color1; border-bottom-color: alpha(@color1, 0.7); }
+#pulseaudio.muted     { color: @color8; border-bottom-color: transparent; }
+#bluetooth.disabled   { color: @color8; border-bottom-color: transparent; }
+
+#battery.warning:not(.charging) {
+    color: @color3;
+    border-bottom-color: alpha(@color3, 0.7);
+}
+
+#battery.critical:not(.charging) {
+    color: @color1;
+    border-bottom-color: @color1;
+    animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+    0%   { opacity: 1; }
+    50%  { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+tooltip {
+    background: alpha(@background, 0.95);
+    border: 1px solid alpha(@color4, 0.3);
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+tooltip label { color: @foreground; }

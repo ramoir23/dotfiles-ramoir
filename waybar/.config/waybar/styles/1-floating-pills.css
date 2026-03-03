@@ -1,0 +1,105 @@
+/* Floating Pills - grupos flutuando separados */
+@import "colors-pywal.css";
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Fira Code", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: @foreground;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    background: alpha(@background, 0.88);
+    border-radius: 12px;
+    margin: 6px 4px;
+    padding: 0 6px;
+}
+
+#workspaces,
+#window,
+#clock,
+#custom-notification,
+#network,
+#bluetooth,
+#pulseaudio,
+#backlight,
+#battery,
+#tray,
+#custom-idle-inhibit {
+    padding: 0 10px;
+    margin: 3px 1px;
+    background: transparent;
+    border-radius: 8px;
+}
+
+#workspaces { padding: 0 4px; }
+
+#workspaces button {
+    padding: 0 7px;
+    color: @color8;
+    background: transparent;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+#workspaces button:hover {
+    background: alpha(@color8, 0.25);
+    color: @foreground;
+}
+
+#workspaces button.active {
+    color: @color4;
+    background: alpha(@color4, 0.25);
+    font-weight: bold;
+}
+
+#workspaces button.nonempty { color: @foreground; }
+
+#workspaces button.urgent {
+    color: @color1;
+    background: alpha(@color1, 0.2);
+}
+
+#clock        { color: @foreground; font-weight: 600; }
+#network      { color: @color6; }
+#pulseaudio   { color: @color5; }
+#backlight    { color: @color3; }
+#battery      { color: @color2; }
+#bluetooth    { color: @color4; }
+#custom-notification { color: @color3; }
+
+#network.disconnected { color: @color1; }
+#pulseaudio.muted     { color: @color8; }
+#bluetooth.disabled   { color: @color8; }
+#bluetooth.connected  { color: @color4; background: alpha(@color4, 0.15); }
+#battery.charging     { color: @color2; background: alpha(@color2, 0.15); }
+
+#battery.warning:not(.charging) { color: @color3; }
+
+#battery.critical:not(.charging) {
+    color: @color1;
+    animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+    0%   { opacity: 1; }
+    50%  { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+tooltip {
+    background: alpha(@background, 0.95);
+    border: 1px solid alpha(@color4, 0.3);
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+tooltip label { color: @foreground; }

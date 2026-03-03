@@ -1,0 +1,118 @@
+/* Tokyo Night - inspirado no tema Tokyo Night, cores frias e neon */
+@import "colors-pywal.css";
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Fira Code", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: alpha(@background, 0.92);
+    color: @foreground;
+    border-bottom: 2px solid alpha(@color4, 0.4);
+}
+
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+#workspaces,
+#window,
+#clock,
+#custom-notification,
+#network,
+#bluetooth,
+#pulseaudio,
+#backlight,
+#battery,
+#tray,
+#custom-idle-inhibit {
+    padding: 2px 12px;
+    margin: 3px 2px;
+    background: alpha(@color0, 0.6);
+    border-radius: 6px;
+    border: 1px solid alpha(@color8, 0.12);
+}
+
+#workspaces {
+    padding: 2px 4px;
+    background: alpha(@color0, 0.6);
+}
+
+#workspaces button {
+    padding: 1px 9px;
+    color: alpha(@foreground, 0.35);
+    background: transparent;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+#workspaces button:hover {
+    color: @foreground;
+    background: alpha(@color4, 0.15);
+}
+
+#workspaces button.active {
+    color: @color4;
+    background: alpha(@color4, 0.2);
+    border-bottom: 2px solid @color4;
+}
+
+#workspaces button.nonempty {
+    color: alpha(@foreground, 0.7);
+}
+
+#workspaces button.urgent {
+    color: @color1;
+    background: alpha(@color1, 0.15);
+}
+
+#clock {
+    color: @color6;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border-color: alpha(@color6, 0.25);
+}
+
+#network      { color: @color6;  border-color: alpha(@color6, 0.2); }
+#pulseaudio   { color: @color5;  border-color: alpha(@color5, 0.2); }
+#backlight    { color: @color3;  border-color: alpha(@color3, 0.2); }
+#battery      { color: @color2;  border-color: alpha(@color2, 0.2); }
+#bluetooth    { color: @color4;  border-color: alpha(@color4, 0.2); }
+#custom-notification { color: @color3; }
+
+#network.disconnected { color: @color1; border-color: alpha(@color1, 0.3); }
+#pulseaudio.muted     { color: @color8; border-color: transparent; }
+#bluetooth.disabled   { color: @color8; border-color: transparent; }
+#bluetooth.connected  { color: @color4; background: alpha(@color4, 0.18); }
+#battery.charging     { color: @color2; background: alpha(@color2, 0.15); }
+
+#battery.warning:not(.charging) {
+    color: @color3;
+    background: alpha(@color3, 0.15);
+}
+
+#battery.critical:not(.charging) {
+    color: @color1;
+    background: alpha(@color1, 0.2);
+    animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+    0%   { opacity: 1; }
+    50%  { opacity: 0.35; }
+    100% { opacity: 1; }
+}
+
+tooltip {
+    background: alpha(@background, 0.96);
+    border: 1px solid alpha(@color4, 0.35);
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+tooltip label { color: @foreground; }
